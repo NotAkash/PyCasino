@@ -27,7 +27,7 @@ while True:  # Keep repeating until user is logged in
     elif (user.lower() == "existing"):  # If existing
         while True:
             try:
-                name = input("Welcome Back! What Is Your Name?: ")  # Get User-Name
+                name = input("What Is Your Name: ")  # Get User-Name
 
             except KeyboardInterrupt:
                 print("Force Exiting Game.", end='')
