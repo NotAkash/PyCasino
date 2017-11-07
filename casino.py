@@ -3,9 +3,9 @@
 # Load Files
 from src.games import *
 from src.play import *
-
-print('---| PyCasino | Build[1.3 ] | Dev: Akash Singh 10C--- [Bugs=0]  |')
-print('---| PyCasino | Whats New: Validation Case Insensitivity Organized Folders|')
+print('|  https://github.com/NotAkash/PyCasino   |')
+print('---| PyCasino | Build[1.3.5] | Dev: Akash Singh 10C---|')#fix  [Known Bugs=0]
+print('---| PyCasino | Whats New: Fixed Roulette Bug, Save Files Cleared For New Users|')
 fexit = 0
 # Start Up User Profile
 print(testing())

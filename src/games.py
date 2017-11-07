@@ -6,6 +6,8 @@ from src.play import *
 from src.gamesplayed import *
 import random
 import sys
+
+#fix roulette won't work
 #Find Balance
 def balance(user):
     return player_cont(user)
@@ -122,22 +124,23 @@ def slots(bet):
 
 def roulette(choice,gamble):
     choice = str(choice)
+    choice= choice.capitalize()
     ngame("roulette")
-    red = [1,4,7,10,13,16,19,22]
+    red = [1,4,7,10,13,16,19,22]                        #All Possible Pools
     black = [2,5,8,11,14,17,20,23]
     green = [3,6,9,12,15,18,21,24]
     even = [2,4,6,8,10,12,14,16,18,20,22,24]
     odd = [1,3,5,7,9,11,13,15,17,19,21,23]
-    win=0
-    won=0
+
+    won=False                                            #Win Or Lose Boolean, if any condition is of win, don't play lose condition.
     d_game1= random.randint(4,7)
-    d_game2= random.randint(9,11)
+    d_game2= random.randint(9,11)                       #Donation game, if this random number within range is a factor of the number of games played, give a free win to the user
     d_game3= random.randint(17,19)
     roll=0
-    if gplayed('roulette')%d_game1==0 and gplayed('roulette')%d_game2!=0 and gplayed('roulette')%d_game3!=0:
-        
-        if choice.capitalize() =='Red' and random.randint(1,6)==1:
-            roll=random.choice(red)
+    if gplayed('roulette')%d_game1==0 and gplayed('roulette')%d_game2!=0 and gplayed('roulette')%d_game3!=0:    #If number of times game is played is a factor for d_game
+                                                                                                                #and not of a bigger d_game then give a free win
+        if choice.capitalize() =='Red' and random.randint(1,6)==1:              #make life a little harder, after the 1/3 * n times played is true, there's a 1/6 chance of winning
+            roll=random.choice(red)                                     #roll will
             
         if choice.capitalize() =='Black' and random.randint(1,6)==1:
             roll=random.choice(black)
@@ -151,7 +154,7 @@ def roulette(choice,gamble):
         if choice.capitalize() =='Even' and random.randint(1,6)==1:
             roll=random.choice(even)
             
-    elif gplayed('roulette')%d_game2!=0 and gplayed('roulette')%d_game3!=0:
+    elif gplayed('roulette')%d_game2==0 and gplayed('roulette')%d_game3!=0:
         if choice.capitalize() =='Red' and random.randint(1,5)==1:
             roll=random.choice(red)
             
@@ -167,8 +170,8 @@ def roulette(choice,gamble):
         if choice.capitalize() =='Even' and random.randint(1,5)==1:
             roll=random.choice(even)
             
-    elif gplayed('roulette')%d_game3!=0:
-        if choice.capitalize() =='Red' and random.randint(1,4)==1:
+    elif gplayed('roulette')%d_game3==0:
+        if choice.capitalize() =='Red' and random.randint(1,4)==1:                      #for bigger factors, chance becomes 1/4
             roll=random.choice(red)
             
         if choice.capitalize() =='Black' and random.randint(1,4)==1:
@@ -182,46 +185,46 @@ def roulette(choice,gamble):
             
         if choice.capitalize() =='Even' and random.randint(1,4)==1:
             roll=random.choice(even)
-    if roll==0:
-        roll = random.randint(1,24)
+    else:
+        roll = random.randint(1,24)                         #otherwise get a random number from any pool
         
     
     print("Your Call Was On",choice.capitalize())
-
     print("Roulette, Called On",roll)
     
-    if choice.capitalize() == 'Red':
+    if choice.capitalize() == 'Red':                                                    #For each pool if choice is in the pool win game
         for i in red:
             if i==roll:
                 
                 print("Your Choice Pool Was Correct!")
                 win= 3*gamble
+                won=True
                 
     elif choice.capitalize() == 'Black':
         for i in black:
             if i==roll:
                 print("Your Choice Pool Was Correct!")
                 win=3*gamble
-                won=1
+                won=True
     elif choice.capitalize() == 'Green':
         for i in green:
             if i==roll:
                 print("Your Choice Pool Was Correct!")
                 win=3*gamble
-                won=1
+                won=True
     elif choice.capitalize() == 'Even':
         for i in even:
             if i==roll:
                 print("Your Choice Pool Was Correct!")
                 win=2*gamble
-                won=1
+                won=True
     elif choice.capitalize() == 'Odd':
         for i in odd:
             if i==roll:
                 print("Your Choice Pool Was Correct!")
                 win=2*gamble
-                won=1
-    if(won==0):
+                won=True
+    if(won==False):
         win=-gamble
         print(roll,"is not in",choice)
         print("Sorry, You Lost:",win)
