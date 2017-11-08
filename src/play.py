@@ -2,17 +2,35 @@
 def offset():
 
     #used to find the last line
-    player= open("src/plist.txt","r+")
+    while True:
+        try:
+            player= open("src/plist.txt","r+")              #This algorithm validates where the file is opening gplist.txt from
+        except FileNotFoundError:                           #if it's being opened from parent, then open from "src/plist.txt"
+            player= open("plist.txt","r+")                       #if being opened from sub then open from "plist.txt"
+            break
+        else:
+            break
     offset = 0
     for line in player:
-        offset += len(line)
-    player.close()
+         offset += len(line)
+    if offset==None:
+        offset=0
     return(offset)
+    player.close()
+
 
 def offsetline():
 
     #used to find all new lines
-    player= open("src/plist.txt","r+")
+    while True:
+        try:
+            player= open("src/plist.txt","r+")              #This algorithm validates where the file is opening gplist.txt from
+        except FileNotFoundError:                           #if it's being opened from parent, then open from "src/plist.txt"
+            player= open("plist.txt","r+")                       #if being opened from sub then open from "plist.txt"
+            break
+        else:
+            break
+
     #This algorithm finds the last line of the txt file
     offsetline=[]
     offset = 0
@@ -26,7 +44,14 @@ def offsetline():
 def pseek():
 
     #used to go to last line of file
-    player= open("src/plist.txt","r+")
+    while True:
+        try:
+            player= open("src/plist.txt","r+")              #This algorithm validates where the file is opening gplist.txt from
+        except FileNotFoundError:                           #if it's being opened from parent, then open from "src/plist.txt"
+            player= open("plist.txt","r+")                       #if being opened from sub then open from "plist.txt"
+            break
+        else:
+            break
     ofset=offset()
     if (ofset>1):
         player.seek(ofset)
@@ -42,7 +67,14 @@ def player_init(name):
     
     #print(player.read()) === read all users
     #Used to initialise a new unexisting player
-    player= open("src/plist.txt","r+")
+    while True:
+        try:
+            player= open("src/plist.txt","r+")              #This algorithm validates where the file is opening gplist.txt from
+        except FileNotFoundError:                           #if it's being opened from parent, then open from "src/plist.txt"
+            player= open("plist.txt","r+")                       #if being opened from sub then open from "plist.txt"
+            break
+        else:
+            break
     player.seek(0)
     for i in offsetline():
         player.seek(i)
@@ -57,7 +89,14 @@ def player_init(name):
 def player_cont(name):
     name=str(name)
     #Returns data for an existing player
-    player= open("src/plist.txt","r")
+    while True:
+        try:
+            player= open("src/plist.txt","r+")              #This algorithm validates where the file is opening gplist.txt from
+        except FileNotFoundError:                           #if it's being opened from parent, then open from "src/plist.txt"
+            player= open("plist.txt","r+")                       #if being opened from sub then open from "plist.txt"
+            break
+        else:
+            break
     for i in offsetline():
         if player.readline()==(name+"\n"):
             money= float(next(player))
@@ -70,7 +109,14 @@ def player_cont(name):
 
 def pbal_update(name,win):
     name=str(name)
-    player= open("src/plist.txt","r+")
+    while True:
+        try:
+            player= open("src/plist.txt","r+")              #This algorithm validates where the file is opening gplist.txt from
+        except FileNotFoundError:                           #if it's being opened from parent, then open from "src/plist.txt"
+            player= open("plist.txt","r+")                       #if being opened from sub then open from "plist.txt"
+            break
+        else:
+            break
     lnum=0
     for i in offsetline():
         if player.readline()==(name+"\n"):
@@ -85,6 +131,3 @@ def pbal_update(name,win):
             break
         lnum=lnum+1
     return(player_cont(name))
-def testing():
-    return True
-

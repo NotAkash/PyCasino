@@ -4,9 +4,10 @@
 from src.games import *
 from src.play import *
 print('|  https://github.com/NotAkash/PyCasino   |')
-print('---| PyCasino | Build[1.3.5] | Dev: Akash Singh 10C---|')#fix  [Known Bugs=0]
-print('---| PyCasino | Whats New: Fixed Roulette Bug, Save Files Cleared For New Users|')
-fexit = 0
+print('---| PyCasino | Build[1.3.6] | Dev: Akash Singh 10C---|')#fix  [Known Bugs=0]
+print('---| PyCasino | Whats New: Save Files Cleared For New Users, Files Ordered|')
+print('---| PyCasino | Bugs Fixed:Play file fixed, users can play. Fixed Roulette Bug|')
+fexit = 0 #force exit
 # Start Up User Profile
 print(testing())
 while True:  # Keep repeating until user is logged in

@@ -2,11 +2,20 @@
 
 #Load Files
 import time
-from src.play import *
-from src.gamesplayed import *
+
 import random
 import sys
 
+while True:                         #This is used in case games.py is ran locally
+    try:                            #and not ran from casino.py
+        from src.play import *
+        from src.gamesplayed import *
+    except ModuleNotFoundError:
+        from play import *
+        from gamesplayed import *
+        break
+    else:
+        break
 #fix roulette won't work
 #Find Balance
 def balance(user):
