@@ -9,7 +9,6 @@ print('---| PyCasino | Whats New: Save Files Cleared For New Users, Files Ordere
 print('---| PyCasino | Bugs Fixed:Play file fixed, users can play. Fixed Roulette Bug|')
 fexit = 0 #force exit
 # Start Up User Profile
-print(testing())
 while True:  # Keep repeating until user is logged in
     try:
         print("Welcome To The Casino")
