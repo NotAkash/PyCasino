@@ -16,7 +16,6 @@ while True:                         #This is used in case games.py is ran locall
         break
     else:
         break
-#fix roulette won't work
 #Find Balance
 def balance(user):
     return player_cont(user)
