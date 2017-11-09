@@ -10,6 +10,7 @@ Version 1.3.4:
 	
 Version 1.3.6:
 	A Bug Surrounding 'play.py' Where Player Could Not Be Initialised Has Been Fixed
+	The Bug Regarding Players With 0.00 As Balance Is Still broken
 	
 # TODO
 
