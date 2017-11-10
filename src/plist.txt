@@ -1,1 +1,4 @@
-$Data Of All Player
+$List Of Players And Their Balance For Casino
+
+Admin
+500
