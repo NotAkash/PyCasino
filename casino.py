@@ -3,71 +3,15 @@
 # Load Files
 from src.games import *
 from src.play import *
-print('|  https://github.com/NotAkash/PyCasino   |')
-print('---| PyCasino | Build[1.3.6] | Dev: Akash Singh 10C---|')#fix  [Known Bugs=0]
-print('---| PyCasino | Whats New: Save Files Cleared For New Users, Files Ordered|')
-print('---| PyCasino | Bugs Fixed:Play file fixed, users can play. Fixed Roulette Bug|')
+from src.start import *
+print('---| PyCasino |  https://github.com/NotAkash/PyCasino ---|')
+print('---| PyCasino | Build[0.5.7] | Dev: Akash 10C|        ---|')#fix  [Known Bugs=0]
+print('---| PyCasino | Check README.md For Changelog|10/11/17---|')
+print('---| PyCasino | Whats New: New Start File To Shorten Code On Main File|')
+print('---| PyCasino | Bugs Fixed:Play file fixed (again), users can play now on Windows and Mac|')
 fexit = 0 #force exit
 # Start Up User Profile
-while True:  # Keep repeating until user is logged in
-    try:
-        print("Welcome To The Casino")
-        user = input("Are You An 'Existing' User Or A 'New' User?: ")
-    except ValueError:  # Error Hashes
-        print("No Value Entered")                          # TODO :Add bank's options, and its vals
-        continue
-    except KeyboardInterrupt:
-        print("Force Exiting Game.", end='')
-        print(".", end='')
-        print(".", end='')
-        exit()
-    if (user.lower() != "existing" and user.lower() != "new"):  # Repeat till user answer is Valid
-        print("Please Try Again")
-        continue
-    elif (user.lower() == "existing"):  # If existing
-        while True:
-            try:
-                name = input("What Is Your Name: ")  # Get User-Name
-
-            except KeyboardInterrupt:
-                print("Force Exiting Game.", end='')
-                print(".", end='')
-                print(".", end='')
-                exit()
-            if name == '':
-                print("Invalid Value")
-                continue
-            else:
-                break
-        if (player_cont(name) >= 0 and player_cont(name) != False):  # Unless False Is Returned Or Balance Is 0
-            print("Welcome Back", name, "Current Balance: ", player_cont(name))
-            money = player_cont(name)  # Show User Value
-            break
-        else:
-            print("User Does Not Exist, Try Again")
-            continue  # Else, Repeat Till Validated
-    elif (user.lower() == "new"):  # If New,
-        print("Welcome To The Casino!")
-        while True:
-            try:
-                name = input("Welcome! What Is Your Name?: ")  # Get User-Name
-            except KeyboardInterrupt:
-                print("Force Exiting Game.", end='')
-                print(".", end='')
-                print(".", end='')
-                exit()
-            if name == '':
-                print("Invalid Value, Try Again")
-                continue
-            else:
-                break
-        if (player_init(name) != False):  # Initialise Name Unless Flase Returned
-            print("Welcome!", name, "Starting Balance: ", player_cont(name))
-            money = player_cont(name)  # Get Account Balance
-            break
-        else:
-            print("User Exists, Try Again")
-            continue
+name= start_game()
 while True:
     try:
         fexit = 0
@@ -174,6 +118,9 @@ while True:
                         continue
 
             if menu == 'Roulette':
+                if player_cont(name) == 0:
+                    print("ERROR: NO BALANCE LEFT")
+                    break
                 red = [1, 4, 7, 10, 13, 16, 19, 22]
                 black = [2, 5, 8, 11, 14, 17, 20, 23]
                 green = [3, 6, 9, 12, 15, 18, 21, 24]
@@ -220,9 +167,7 @@ while True:
                         print(".", end='')
                         print(".", end='')
                         break
-                    if player_cont(name) == 0:
-                        print("ERROR: NO BALANCE LEFT")
-                        break
+
                     if gamble != 0:
                         if (gamble > 0 and gamble <= balance(name)):
                             break
