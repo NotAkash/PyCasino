@@ -6,9 +6,9 @@ from src.play import *
 from src.start import *
 print('---| PyCasino |  https://github.com/NotAkash/PyCasino ---|')
 print('---| PyCasino | Build[0.5.7] | Dev: Akash 10C|        ---|')#fix  [Known Bugs=0]
-print('---| PyCasino | Check README.md For Changelog|10/11/17---|')
+print('---| PyCasino | Check README.md For Changelog|11/11/17---|')
 print('---| PyCasino | Whats New: New Start File To Shorten Code On Main File|')
-print('---| PyCasino | Bugs Fixed:Play file fixed (again), users can play now on Windows and Mac|')
+print('---| PyCasino | Bugs Fixed:Play file fixed (again), Changed Backend Database From .txt To .csv|')
 fexit = 0 #force exit
 # Start Up User Profile
 name= start_game()
