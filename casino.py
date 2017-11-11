@@ -1,6 +1,6 @@
 # Casino Games
 
-# Load Files
+# Import Files
 from src.games import *
 from src.play import *
 from src.start import *

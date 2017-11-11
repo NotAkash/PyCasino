@@ -17,9 +17,9 @@ Download the folder and run 'casino.py'
 
 *Version 0.5.7:*
 
-    Pushed The Patch Regarding Bug #1 (Player Balances Breaking Files) 
+    Pushed The Patch Regarding Bug #1 By Changing The Backend Database
     UNTESTED
-    Cleared Up The Casino Start Player File 
+    New Start File To Ease Up Memory Of Casino And Keep Change User Option Synced
 
 # TODO
 
