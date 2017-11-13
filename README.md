@@ -18,9 +18,13 @@ Download the folder and run 'casino.py'
 *Version 0.5.7:*
 
     Pushed The Patch Regarding Bug #1 By Changing The Backend Database
-    UNTESTED
     New Start File To Ease Up Memory Of Casino And Keep Change User Option Synced
 
+*Version 0.5.8:*
+
+    New Database For All Local Files. Moved Entire Save File To .CSV
+   
+ 
 # TODO
 
 Read https://github.com/NotAkash/PyCasino/issues
