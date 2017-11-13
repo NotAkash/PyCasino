@@ -40,7 +40,11 @@ def start_game():
                     continue
                 else:
                     break
-            if (player_cont(name) >= int(0)):  # Unless False Is Returned Or Balance Is 0
+            if (str(player_cont(name))=='False'): #If Balance Is 'False'
+                print("User Does Not Exist, Try Again")
+                continue  # Else, Repeat Till Validated
+            elif (player_cont(name) > 0):  # Unless False Is Returned
+                print(player_cont(name))
                 print("Welcome Back", name, "Current Balance: ", player_cont(name))
                 money = player_cont(name)  # Show User Value
                 break

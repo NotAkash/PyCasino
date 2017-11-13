@@ -6,13 +6,16 @@ import time
 import random
 import sys
 
+#Import Local Files
 while True:                         #This is used in case games.py is ran locally
     try:                            #and not ran from casino.py
         from src.play import *
         from src.gamesplayed import *
+        from src.start import start_game
     except ModuleNotFoundError:
         from play import *
         from gamesplayed import *
+        from start import start_game
         break
     else:
         break

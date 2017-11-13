@@ -1,16 +1,27 @@
 #New CSV Supporting Database, To Compensate For The Senseless Newline (\r\n) On Windows
 #Reworked The Entire Database On .csv (Comma Seperated Values)
 #Import Files
-
-
 import csv
 
 #Open files
 def openfile():
-    try:
-        player = open('src/plist.csv',"r+", newline='')  # This algorithm validates where the file is opening plist.csv from
-    except FileNotFoundError:                        # if it's being opened from parent, then open from "src/plist.csv"
-        player = open("plist.csv","r+", newline='')
+    while True:
+        try:
+            player = open("src/plist.csv","r+")              #This algorithm validates where the file is opening plist.csv from
+        except FileNotFoundError:                           #if it's being opened from parent, then open from "src/plist.csv"            player= open("plist.csv","r+")
+            while True:
+                try:
+                    player= open("plist.csv","r+")
+                except FileNotFoundError:
+                    gplay = open("plist.csv","w")
+                    gplay.close()
+                    player=open("plist.csv","r+")
+                    break
+                else:
+                    break
+            break
+        else:
+            break
     return(player)
 
 
@@ -21,20 +32,17 @@ def writeinfile():
         player = open("plist.csv","w", newline='')
     return(player)
 
-
+#Init User
 def player_init(name):
     player= openfile()
     readfile = csv.reader(player)
     rows=[]
     for row in readfile:
         rows.append(row)
-
-    for row in readfile:
-        rows.append(row)
-        if row==name:
-            player.close()
-            return False
-
+        for entity in row:
+            if entity==name:
+                player.close()
+                return(False)
     player.close()
     player= writeinfile()
     writer= csv.writer(player)
@@ -42,37 +50,36 @@ def player_init(name):
     writer.writerows(rows)
     names=[]
     names.append(name)
-    names.append("500")
+    names.append("500.00")
     name=names
     writer.writerow([""])
     writer.writerow(name)
+    player.close()
 
     return
 
-
+#Returning User
 def player_cont(name):
-
     player = openfile()
     readfile = csv.reader(player)
     for row in readfile:
         while True:
             try:
                 if row[0]==name:
+
                     money = row[1]
                     player.close()
-                    money= int(money)
-                    return (money)
+                    money= float(money)
+                    return money
             except IndexError:
                 break
             else:
                 break
-
     player.close()
     return False
 
-
+#Update User
 def pbal_update(name,win):
-
     player= openfile()
     readfile = csv.reader(player)
 
@@ -80,7 +87,6 @@ def pbal_update(name,win):
 
     for row in readfile:
         rows.append(row)
-
     money= player_cont(name) + win
     player = writeinfile()
     writer = csv.writer(player)
@@ -100,8 +106,7 @@ def pbal_update(name,win):
                     break
                 else:
                     break
-
         a += 1
     writer.writerows(rows)
-    return(player_cont(name))
-
+    player.close()
+    return(float(money))
