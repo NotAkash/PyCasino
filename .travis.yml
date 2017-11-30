@@ -1,6 +1,2 @@
 python:
     - "3.6"
-install:
-    - make build
-script:
-    - echo casino.py
