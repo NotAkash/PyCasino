@@ -16,7 +16,7 @@ while True:
     try:
         fexit = 0
         input("Press 'ENTER' To Continue")
-        menuitems = ['Account Balance', 'Slot Machine', 'Roulette', 'Change User', 'Go To Bank', 'Quit']
+        menuitems = ['Account Balance', 'Slot Machine', 'Roulette', 'Blackjack', 'Change User', 'Quit']
         print("What Would You Like To Do?")
     except KeyboardInterrupt:
         fexit = 1
@@ -66,6 +66,7 @@ while True:
             noption += 1  # Give Options With Option Codes (1,2,3 ETC)
         try:
             fexit = 0
+            print("Options= '1' to '%s' " %len(menuitems))
             uoption = int(input("Option Number?: "))
         except ValueError:
             continue
@@ -180,6 +181,9 @@ while True:
                     fexit = 0
                     pbal_update(name, roulette(choice, gamble))
 
+            if menu == 'Blackjack':
+                gamble = int(input("Inital Gamble: "))
+                blackjack(gamble)
             if menu == 'Change User':
                 name = usr()
             if menu == 'Quit':

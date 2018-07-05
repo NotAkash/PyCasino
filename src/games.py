@@ -2,7 +2,6 @@
 
 #Load Files
 import time
-
 import random
 import sys
 
@@ -19,7 +18,9 @@ while True:                         #This is used in case games.py is ran locall
         break
     else:
         break
+
 #Find Balance
+
 def balance(user):
     return player_cont(user)
 
@@ -245,12 +246,86 @@ def roulette(choice,gamble):
     return win
 
 
+def blackjack(base_gamble):
+    print("Welcome To Blackjack")
+    time.sleep(1)
+    print("Ace is 1")
+    print("Jack[J], Joker[T], Queen[Q], King[K] are 10")
+    print("Rest Of The Deck Represents A Score Of Its Own Value\n")
+    time.sleep(4)
+
+    print("Get Closest To '21' To Win, Play Against Dealer")
+    print("Hit == Take Another Card From Deck")
+    print("Stand == End Game, See If Cards Amount To A Score Closer To 21 Than The Dealer")
+    print("Double Down == Double Gamble If Confident In Chances Of Winning\n")
+    time.sleep(4)
+
+    outcome = "Hit, Stand Or Double Down"
+    # Initialise Score
+    player_score = 0
+    dealer_score = 0
+    win = 0
+
+    # define globals for cards
+    RANKS = ['10','10','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10']
+    VALUES = {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 10, 'Q': 10, 'K': 10}
+    CARDS = ['A','2','3','4','5','6','7','8','9','Q','K','J','T',]
+    # Start Game
+
+    error_message = "Invalid Entry, Try One Of:", outcome
+    while player_score<=21:
+
+        # Options
+        while True:
+            try:
+                print("So Far Your Cards Are Valued At", player_score)
+                print("If You Are Confident In Your Value, Stand. Else: Hit / Double Down\n")
+                choice = input("%s?: "%outcome)
+            except ValueError:
+                print(error_message)
+                continue
+            if choice.lower() != "hit" and choice.lower() != "stand" and choice.lower() != "double down":
+                print(error_message)
+                continue
+            else:
+                if choice.lower()=="stand" and player_score==0:
+                    print("Cant stand while card score is just %i, forcing option: 'Hit'"%player_score)
+                    choice = "Hit"
+
+                break
+
+        #Give Semi Random Score To Dealer
+        dealer_score += int(random.choice(list(RANKS)))
+#        TODO | deal with tie| add content to diffrent choices
+
+        #Continue a round, based on user choice
+    
+        if choice.lower() == "hit":
+            random_card = random.choice(CARDS)
+            player_score += VALUES[random_card]
+            time.sleep(1)
+            print("You Chose To Pick Up Another Card With A Current Score Of %i, You Receive The Card, %s" % (int(player_score), str(random_card)))
+
+            break
+            #Hit Player
+
+        if choice.lower() == "stand":
+            #TODO compare values of bot/user and then tell user who won, change win vars and return that
+
+            break
+            #Stand Player
+
+        if choice.lower() == "double down":
+
+            break
+            #Double Down Player
+
+    return(win)
+
+
 def usr():
     name = start_game()
     return(name)
-
-
-
 
 
 def doexit():
