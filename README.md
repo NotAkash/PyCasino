@@ -3,7 +3,7 @@ PythonCasino: A fully functional, open source casino in python.
 Download the folder and run 'casino.py' 
 
 
-# Change Log
+# Update Log
 
 *Version 0.5.4:*
 
@@ -28,3 +28,7 @@ Download the folder and run 'casino.py'
 # TODO
 
 Read https://github.com/NotAkash/PyCasino/issues
+
+# Licence
+
+Standard Creative Commerce Licensing. Please Give Credit If Using This Project To "Akash Singh 10C The British School"
