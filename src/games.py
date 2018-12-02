@@ -6,7 +6,7 @@ import random
 import sys
 
 #Import Local Files
-while True:                         #This is used in case games.py is ran locally
+while True:                         # This is used in case games.py is ran locally
     try:                            #and not ran from casino.py
         from src.play import *
         from src.gamesplayed import *
@@ -246,7 +246,12 @@ def roulette(choice,gamble):
     return win
 
 
+# BlackJack discontinued, too similar to other games.
+
 def blackjack(base_gamble):
+
+    print("Under Construction")
+    return(base_gamble)
     print("Welcome To Blackjack")
     time.sleep(1)
     print("Ace is 1")
@@ -258,8 +263,10 @@ def blackjack(base_gamble):
     print("Hit == Take Another Card From Deck")
     print("Stand == End Game, See If Cards Amount To A Score Closer To 21 Than The Dealer")
     print("Double Down == Double Gamble If Confident In Chances Of Winning\n")
-    time.sleep(4)
+    x = player_init("s")
 
+
+"""
     outcome = "Hit, Stand Or Double Down"
     # Initialise Score
     player_score = 0
@@ -296,7 +303,7 @@ def blackjack(base_gamble):
 
         #Give Semi Random Score To Dealer
         dealer_score += int(random.choice(list(RANKS)))
-#        TODO | deal with tie| add content to diffrent choices
+        #        TODO | deal with tie| add content to diffrent choices
 
         #Continue a round, based on user choice
     
@@ -321,6 +328,8 @@ def blackjack(base_gamble):
             #Double Down Player
 
     return(win)
+
+  """
 
 
 def usr():

@@ -1,14 +1,16 @@
-#New CSV Supporting Database, To Compensate For The Senseless Newline (\r\n) On Windows
-#Reworked The Entire Database On .csv (Comma Seperated Values)
+# New CSV Supporting Database, To Compensate For The Senseless Newline (\r\n) On Windows
+# Reworked The Entire Database On .csv (Comma Seperated Values)
 
 
-#Give players a higher chance of winning after a certain number of games have been played
-#because, we are nice
+# Give players a higher chance of winning after a certain number of games have been played
+# because, we are nice
 
-#Import Files
+# Import Files
 import csv
 
-#Open Files To Read
+# Open Files To Read
+
+
 def openfile():
     while True:
         try:
@@ -105,5 +107,5 @@ def ngame(game):
 $List Of The Games And How Much They Have Been Played
 Game, Times Played
 
-Akash,1
+Admin,1
 """

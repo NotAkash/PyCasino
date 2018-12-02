@@ -5,11 +5,11 @@ from src.games import *
 from src.play import *
 from src.start import *
 print('---| PyCasino |  https://github.com/NotAkash/PyCasino ---|')
-print('---| PyCasino | Build[0.5.7] | Dev: Akash 10C|        ---|')#fix  [Known Bugs=0]
-print('---| PyCasino | Check README.md For Changelog|11/11/17---|')
-print('---| PyCasino | Whats New: New Start File To Shorten Code On Main File|')
-print('---| PyCasino | Bugs Fixed:Play file fixed (again), Changed Backend Database From .txt To .csv|')
-fexit = 0 #force exit
+print('---| PyCasino | Build[0.5.7] | Dev: Akash 11C|        ---|')  # fixme  [Known Bugs=0]
+print('---| PyCasino | Check README.md For Changelog|11/11/17---|')  # todo [Remove / Fix BlackJack]
+print('---| PyCasino | Whats New: New Start File To Shorten Code On Main File -|')
+print('---| PyCasino | Changed Backend Database From .txt To .csv             -|')
+fexit = 0  # force exit
 # Start Up User Profile
 name= start_game()
 while True:
@@ -68,6 +68,8 @@ while True:
             fexit = 0
             print("Options= '1' to '%s' " %len(menuitems))
             uoption = int(input("Option Number?: "))
+        except IndexError:
+            continue
         except ValueError:
             continue
         except KeyboardInterrupt:
@@ -76,6 +78,9 @@ while True:
             print(".", end='')
             break
         for i in menuitems:
+            if uoption > len(menuitems):
+                print("Can't Be More Than", len(menuitems))
+                continue
             if i == menuitems[uoption - 1]:
                 print("Ok... Setting Up,", i)
                 choption = True
